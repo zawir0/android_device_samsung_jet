@@ -14,10 +14,12 @@
 /dev/pmem_gpu1            0666   system     graphics
 
 # for GSM radio
-/dev/dpram                0660   radio      radio
-/dev/dpramerr             0660   radio      radio
+# modemctl-based interface (Wave-style samsung_modemctl kernel driver)
+# replaces legacy spica_dpram nodes (/dev/dpram, /dev/dpramerr)
+/dev/modem_ctl            0660   radio      radio
+/dev/modem_ipc0           0660   radio      radio
+/dev/modem_boot           0660   radio      radio
 /dev/multipdp             0660   radio      radio
-/dev/block/bml10          0660   radio      radio
 /dev/ttySAC0              0660   radio      radio
 /dev/ttyCSD0              0660   radio      radio
 /dev/ttySMD0              0660   radio      radio

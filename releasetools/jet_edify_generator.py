@@ -20,7 +20,7 @@ RELEASETOOLS_DIR = os.path.abspath(os.path.join(LOCAL_DIR, '../../../build/tools
 VENDOR_SAMSUNG_DIR = os.path.abspath(os.path.join(LOCAL_DIR, '../../../vendor/samsung'))
 
 import edify_generator
-import spica_common as common
+import jet_common as common
 
 class EdifyGenerator(edify_generator.EdifyGenerator):
   def Mount(self, mount_point):
@@ -66,7 +66,7 @@ class EdifyGenerator(edify_generator.EdifyGenerator):
         self.script.append(
             'package_extract_file("%(fn)s", "%(device)s");' % args)
       elif partition_type == "BML":
-	        self.script.append(
+        self.script.append(
             ('assert(package_extract_file("%(fn)s", "/tmp/%(device)s.img"),\n'
              '       write_raw_image("/tmp/%(device)s.img", "%(device)s"),\n'
              '       delete("/tmp/%(device)s.img"));') % args)
