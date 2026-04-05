@@ -1,0 +1,14 @@
+#
+# system.prop for spica
+#
+
+# RIL Config
+rild.libpath=/system/lib/libmocha-ril.so
+rild.libargs=-d /dev/dpram
+# Display
+ro.sf.lcd_density=240
+keyguard.no_require_sim=true
+ro.ril.ntmodeglobal=1
+
+# USB Mounting
+persist.sys.usb.config=mass_storage,adb
