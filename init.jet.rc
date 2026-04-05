@@ -42,8 +42,8 @@ on boot
     write /sys/devices/system/cpu/cpufreq/conservative/sampling_down_factor 3
     write /sys/devices/system/cpu/cpufreq/conservative/freq_step 17
 
-    setprop ro.build.product spica
-    setprop ro.product.device spica
+    setprop ro.build.product jet
+    setprop ro.product.device jet
     setprop ro.radio.use-ppp no
 
 on fs
@@ -69,9 +69,14 @@ on fs
 
     #symlinks for samsung RIL
     mkdir /radio 0775 radio radio
-    symlink /dev/block/bml10 /radio/modem.bin
-    chown radio radio /radio/modem.bin
-    chmod 0664 /radio/modem.bin
+    # modemctl-backed IPC: expose control and IPC devices to radio group
+    # (replaces legacy spica_dpram bml10 modem.bin symlink)
+    chown radio radio /dev/modem_ctl
+    chmod 0660 /dev/modem_ctl
+    chown radio radio /dev/modem_ipc0
+    chmod 0660 /dev/modem_ipc0
+    chown radio radio /dev/modem_boot
+    chmod 0660 /dev/modem_boot
 
 # change permission for accelerometer
     chown system system /sys/class/input/input3/poll

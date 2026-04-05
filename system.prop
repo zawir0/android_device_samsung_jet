@@ -1,10 +1,12 @@
 #
-# system.prop for spica
+# system.prop for jet
 #
 
 # RIL Config
-rild.libpath=/system/lib/libmocha-ril.so
-rild.libargs=-d /dev/dpram
+# Use libsec-ril with the modemctl IPC device (Wave-style modemctl kernel driver)
+# Previously pointed to libmocha-ril + /dev/dpram (spica_dpram legacy)
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/modem_ipc0
 # Display
 ro.sf.lcd_density=240
 keyguard.no_require_sim=true
