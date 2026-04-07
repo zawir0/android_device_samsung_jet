@@ -67,14 +67,13 @@ PRODUCT_COPY_FILES += \
     device/samsung/jet/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
     device/samsung/jet/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
-# Prebuilt RIL files (modemctl-compatible Samsung SEC RIL)
-# replaces libmocha-ril which used the legacy spica_dpram interface
-PRODUCT_COPY_FILES += \
-    device/samsung/jet/prebuilt/ril/libsecril-client.so:system/lib/libsecril-client.so \
-    device/samsung/jet/prebuilt/ril/libsecril-client.so:obj/lib/libsecril-client.so \
-    device/samsung/jet/prebuilt/ril/libsec-ril.so:system/lib/libsec-ril.so \
-    device/samsung/jet/prebuilt/ril/libril.so:system/lib/libril.so \
-    device/samsung/jet/prebuilt/ril/efsd:system/bin/efsd
+# Prebuilt RIL files
+# PRODUCT_COPY_FILES += \
+#    device/samsung/jet/prebuilt/ril/libsecril-client.so:system/lib/libsecril-client.so \
+#    device/samsung/jet/prebuilt/ril/libsecril-client.so:obj/lib/libsecril-client.so \
+#    device/samsung/jet/prebuilt/ril/libsec-ril.so:system/lib/libsec-ril.so \
+#    device/samsung/jet/prebuilt/ril/libril.so:system/lib/libril.so \
+#    device/samsung/jet/prebuilt/ril/efsd:system/bin/efsd
 
 # Generated kcm keymaps
 PRODUCT_PACKAGES := \
@@ -105,8 +104,9 @@ PRODUCT_PACKAGES += \
     audio_policy.default \
     librs_jni
 
-# RIL - using prebuilt libsec-ril (modemctl-backed IPC)
+# RIL
 PRODUCT_PACKAGES += \
+    libmocha-ril \
     rild
 
 # Filesystem management tools
@@ -196,6 +196,3 @@ $(call inherit-product-if-exists, vendor/samsung/jet/jet-vendor.mk)
 
 BOARD_WLAN_DEVICE_REV := bcm4325
 WIFI_BAND             := 802_11_ABG
-
-# OTA / release tools
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jet/releasetools

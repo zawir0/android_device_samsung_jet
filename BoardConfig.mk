@@ -48,9 +48,9 @@ TARGET_KERNEL_CONFIG := gt_s8000_defconfig
 TARGET_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBAUDIO := true
 
-# RIL / Modem (modemctl-backed: Wave-style samsung_modemctl kernel driver)
-# libsec-ril interfaces with /dev/modem_ipc0; libsecril-client for AT commands
+# RIL / Modem
 BOARD_USES_LIBSECRIL_STUB := true
+BOARD_RIL_CLASS := ../../../device/samsung/jet/ril/
 
 # Init & Ramdisk
 TARGET_PROVIDES_INIT := true
@@ -118,7 +118,3 @@ JS_ENGINE := v8
 BUILD_WITH_FULL_STAGEFRIGHT := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_NO_MISC_PARTITION := true
-
-# Prelink map
-TARGET_PRELINK_MODULE := false
-PRODUCT_SPECIFIC_DEFINES += TARGET_PRELINKER_MAP=$(TOP)/device/samsung/jet/prelink-linux-arm-jet.map
