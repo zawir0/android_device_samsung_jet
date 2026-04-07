@@ -49,8 +49,7 @@ TARGET_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBAUDIO := true
 
 # RIL / Modem
-BOARD_USES_LIBSECRIL_STUB := true
-BOARD_RIL_CLASS := ../../../device/samsung/jet/ril/
+#BOARD_USES_LIBSECRIL_STUB := true
 
 # Init & Ramdisk
 TARGET_PROVIDES_INIT := true
